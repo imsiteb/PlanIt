@@ -1,38 +1,41 @@
-import { removeFromStorage } from './auth-token.service';
-import { IAuthForm, IAuthResponse } from "@/types/auth.types";
-import { axiosClassic } from "../api/interceptors";
-import { saveTokenStorage } from "@/services/auth-token.service";
+import { IAuthForm, IAuthResponse } from '@/types/auth.types'
+
+import { axiosClassic } from '@/api/interceptors'
+
+import { removeFromStorage, saveTokenStorage } from './auth-token.service'
 
 export const authService = {
-  
-  async main(type: 'login' | 'register', data: IAuthForm) {
-    const response = await axiosClassic.post<IAuthResponse>(
-      `/auth/${type}`,
-      data
-    )
+	async main(type: 'login' | 'register', data: IAuthForm) {
+		console.log('response making...')
+		const response = await axiosClassic.post<IAuthResponse>(
+			`/auth/${type}`, data )
 
-    if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+		console.log('response', response)
 
-    return response
-  },
+		if (response.data.accessToken) {
+			saveTokenStorage(response.data.accessToken)
+			console.log('Data found')
+		}
+		else console.log('No data in response')
 
-  async getNewTokens() {
-    const response = await axiosClassic.post<IAuthResponse>(
-      '/auth/login/access-token'
-    )
+		return response
+	},
 
-    if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+	async getNewTokens() {
+		const response = await axiosClassic.post<IAuthResponse>(
+			'/auth/login/access-token'
+		)
 
-    return response
-  },
+		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
 
-  async logout() {
-    const response = await axiosClassic.post<boolean>(
-      '/auth/logout'
-    )
+		return response
+	},
 
-    if (response.data) removeFromStorage()
+	async logout() {
+		const response = await axiosClassic.post<boolean>('/auth/logout')
 
-    return response
-  }
+		if (response.data) removeFromStorage()
+
+		return response
+	}
 }
