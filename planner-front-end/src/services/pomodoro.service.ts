@@ -1,7 +1,7 @@
 import { axiosWithAuth } from "@/api/interceptors"
 import { IPomodoroSessionResponse, IPomodoroSettingsResponse, TypePomodoroRoundState, TypePomodoroSessionState, TypePomodoroSettingsState } from "@/types/pomodoro.types"
 
-export class PomodoroService {
+class PomodoroService {
   private BASE_URL = '/user/timer'
 
   async getTodaySession() {
@@ -29,9 +29,15 @@ export class PomodoroService {
     return response
   }
 
+  async getPomodoroSettings() {
+    const response = await axiosWithAuth.get(`${this.BASE_URL}/settings`)
+    return response.data
+  }
+
   async updatePomodoroSettings(id: string, data: TypePomodoroSettingsState) {
-    const response = await axiosWithAuth.put(`${this.BASE_URL}/settings/${id}`, data)
+    const response = await axiosWithAuth.put(`${this.BASE_URL}/settings`, data)
     return response
   }
 }
 
+export const pomodoroService = new PomodoroService()

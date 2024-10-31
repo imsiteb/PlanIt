@@ -49,11 +49,17 @@ export class PomodoroController {
     return this.pomodoroService.deleteSession(id, userId)
   }
 
+  @Get('/settings')
+  @Auth()
+  async getSettings(@CurrentUser('id') userId: string) {
+    return this.pomodoroService.getPomodoroSettings(userId)
+  }
+
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
-  @Put('/settings/:id') // надо ли сеттингс в пути?
+  @Put('/settings')
   @Auth()
-  async updateSettings(@CurrentUser('id') id: string, @Body() dto: PomodoroSettingsDto, @Param('id') pomodoroSettingsId: string) {
-    return this.pomodoroService.updatePomodoroSettings(id, dto, pomodoroSettingsId)
+  async updateSettings(@CurrentUser('id') userId: string, @Body() dto: PomodoroSettingsDto) {
+    return this.pomodoroService.updatePomodoroSettings(userId, dto)
   }
 }

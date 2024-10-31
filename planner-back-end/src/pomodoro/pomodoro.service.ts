@@ -99,11 +99,18 @@ export class PomodoroService {
     })
   }
 
-  async updatePomodoroSettings(userId: string, dto: PomodoroSettingsDto, pomodoroSettingsId: string) {
+  async getPomodoroSettings(userId: string){
+    return this.prisma.pomodoroSettings.findFirst({
+      where: {
+        userId
+      }
+    })
+  }
+
+  async updatePomodoroSettings(userId: string, dto: PomodoroSettingsDto) {
     return this.prisma.pomodoroSettings.update({
       where: {
         userId,
-        id: pomodoroSettingsId,
       },
       data: dto,
     })
