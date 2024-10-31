@@ -34,9 +34,9 @@ class PomodoroService {
     return response.data
   }
 
-  async updatePomodoroSettings(id: string, data: TypePomodoroSettingsState) {
+  async updatePomodoroSettings(data: TypePomodoroSettingsState) {
     const response = await axiosWithAuth.put(`${this.BASE_URL}/settings`, data)
-    return response
+    return response.data
   }
 }
 

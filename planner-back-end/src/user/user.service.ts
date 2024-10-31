@@ -24,7 +24,7 @@ export class UserService {
     return this.prisma.user.findUnique({
       where: {
         email
-      } 
+      }
     })
   }
 
@@ -74,15 +74,21 @@ export class UserService {
   }
 
   async create(dto: AuthDto) {
-    const user = {
-      email: dto.email,
-      name: '',
-      password: await hash(dto.password), // хэшириуем пароль
-    }
+    const user = await this.prisma.user.create({
+      data: {
+        email: dto.email,
+        name: '',
+        password: await hash(dto.password), // Хэшируем пароль
+      },
+    });
 
-    return this.prisma.user.create({
-      data: user,
-    })
+    await this.prisma.pomodoroSettings.create({
+      data: {
+        userId: user.id
+      },
+    });
+
+    return user;
   }
 
   async update(id: string, dto: UserDto) {
@@ -99,7 +105,7 @@ export class UserService {
       data,
       select: {
         name: true,
-        email: true, 
+        email: true,
       }
     })
   }

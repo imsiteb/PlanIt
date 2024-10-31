@@ -100,7 +100,7 @@ export class PomodoroService {
   }
 
   async getPomodoroSettings(userId: string){
-    return this.prisma.pomodoroSettings.findFirst({
+    return this.prisma.pomodoroSettings.findUnique({
       where: {
         userId
       }
@@ -112,7 +112,7 @@ export class PomodoroService {
       where: {
         userId,
       },
-      data: dto,
+      data: dto
     })
   }
 }
