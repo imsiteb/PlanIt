@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function useProfile() {
   const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['getProfile'],
+    queryKey: ['profile'],
     queryFn: () => userService.getProfile()
   })
 

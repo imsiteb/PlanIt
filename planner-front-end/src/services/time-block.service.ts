@@ -24,7 +24,7 @@ class TimeBlockService {
     return response
   }
 
-  async deleteSession(id: string) {
+  async deleteTimeBlock(id: string) {
     const response = await axiosWithAuth.delete(`${this.BASE_URL}/${id}`)
     return response
   }

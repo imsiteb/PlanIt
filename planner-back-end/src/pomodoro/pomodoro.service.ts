@@ -107,7 +107,7 @@ export class PomodoroService {
     })
   }
 
-  async updatePomodoroSettings(userId: string, dto: PomodoroSettingsDto) {
+  async settingsUpdate(userId: string, dto: PomodoroSettingsDto) {
     return this.prisma.pomodoroSettings.update({
       where: {
         userId,

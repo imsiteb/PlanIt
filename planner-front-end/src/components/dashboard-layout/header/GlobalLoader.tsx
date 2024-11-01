@@ -1,7 +1,7 @@
 'use client'
 
 import { useIsFetching, useIsMutating } from "@tanstack/react-query"
-import Loader from "../../Loader"
+import { Loader } from "lucide-react"
 
 export function GlobalLoader() {
   const isMutating = useIsMutating()  

@@ -9,42 +9,26 @@ import { TypePomodoroSettingsState } from "@/types/pomodoro.types"
 import { Button } from "@/components/ui/buttons/Button"
 
 export function Settings() {
-  const { register, handleSubmit, reset } = useForm<TypeUserForm & TypePomodoroSettingsState>({
-    mode: 'onChange'
-  })
+	const { register, handleSubmit, reset } = useForm<TypeUserForm & TypePomodoroSettingsState>({
+		mode: 'onChange'
+	})
 
-  useInitialData(reset)
+	useInitialData(reset)
 
-  const { isPending, mutate } = useUpdateSettings()
+	const { isPending, mutate } = useUpdateSettings()
 
-  const onSubmit: SubmitHandler<TypeUserForm & TypePomodoroSettingsState> = data => {
-    const { password, ...rest } = data
+	const onSubmit: SubmitHandler<
+		TypeUserForm & TypePomodoroSettingsState
+	> = data => {
+		const { password, ...rest } = data
 
-    mutate({
-      ...rest,
-      password: password || undefined
-    })
-  }
+		mutate({
+			...rest,
+			password: password || undefined
+		})
+	}
 
-
-  // const { register, handleSubmit, reset } = useForm<TypeUserForm>({
-	// 	mode: 'onChange'
-	// })
-
-	// useInitialData(reset)
-
-	// const { isPending, mutate } = useUpdateSettings()
-
-	// const onSubmit: SubmitHandler<TypeUserForm> = data => {
-	// 	const { password, ...rest } = data
-
-	// 	mutate({
-	// 		...rest,
-	// 		password: password || undefined
-	// 	})
-	// }
-
-  return (
+	return (
 		<div>
 			<form
 				className='w-2/4'

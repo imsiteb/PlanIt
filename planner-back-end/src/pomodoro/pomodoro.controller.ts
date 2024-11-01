@@ -4,6 +4,7 @@ import { CurrentUser } from 'src/auth/decorators/user.decorator';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { PomodoroRoundDto, PomodoroSessionDto, PomodoroSettingsDto } from './pomodoro.dto';
 import { InternalServerErrorException, BadRequestException } from '@nestjs/common';
+import { log } from 'console';
 
 @Controller('user/timer')
 export class PomodoroController {
@@ -24,13 +25,13 @@ export class PomodoroController {
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
-  @Put(':id')
+  @Put('/:id')
   @Auth()
   async update(
     @Body() dto: PomodoroSessionDto,
     @CurrentUser('id') userId: string,
     @Param('id') id: string) {
-    return this.pomodoroService.update(dto, id, userId)
+    return this.pomodoroService.update(dto, userId, id)
   }
 
   @UsePipes(new ValidationPipe())
@@ -58,10 +59,10 @@ export class PomodoroController {
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
-  @Put('/settings')
+  @Post('/settings')
   @Auth()
-  async updateSettings(@CurrentUser() userId: string, @Body() dto: PomodoroSettingsDto) {
-    return this.pomodoroService.updatePomodoroSettings(userId, dto)
+  async updateSettings(@CurrentUser('id') userId: string, @Body() dto: PomodoroSettingsDto) {
+    return this.pomodoroService.settingsUpdate(userId, dto)
   }
 
   // @UsePipes(new ValidationPipe())
