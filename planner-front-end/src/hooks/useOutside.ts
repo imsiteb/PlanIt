@@ -17,6 +17,12 @@ export const useOutside = (initialIsVisible: boolean): TypeOut => {
 	}
 
 	useEffect(() => {
+    if (isShow && ref.current) {
+      ref.current.focus();
+    }
+  }, [isShow]);
+
+	useEffect(() => {
 		document.addEventListener('click', handleClickOutside, true)
 		return () => {
 			document.removeEventListener('click', handleClickOutside, true)

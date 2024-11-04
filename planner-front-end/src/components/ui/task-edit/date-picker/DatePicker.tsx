@@ -2,11 +2,11 @@ import cn from 'clsx'
 import dayjs from 'dayjs'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat' // локализовали формат
 import { X } from 'lucide-react'
-import { useState } from 'react'
-import { DayPicker, type SelectSingleEventHandler } from 'react-day-picker'
+import { useEffect, useState } from 'react'
+import { DayPicker, OnSelectHandler, type SelectSingleEventHandler } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import './DatePicker.scss'
-import { formatCaption } from './DatePickerCaption'
+// import { formatCaption } from './DatePickerCaption'
 import { useOutside } from '@/hooks/useOutside'
 
 dayjs.extend(LocalizedFormat)
@@ -25,7 +25,7 @@ export function DatePicker({
 	const [selected, setSelected] = useState<Date>()
 	const { isShow, setIsShow, ref } = useOutside(false)
 
-	const handleDaySelect: SelectSingleEventHandler = date => {
+	const handleDaySelect: OnSelectHandler<Date | undefined> = date => {
 		const ISOdate = date?.toISOString()
 
 		setSelected(date)
@@ -36,6 +36,12 @@ export function DatePicker({
 			onChange('')
 		}
 	}
+
+  // useEffect(() => {
+  //   if (isShow && dayPickerRef.current) {
+  //     dayPickerRef.current.focus();
+  //   }
+  // }, [isShow]);
 
 	return (
 		<div
@@ -64,15 +70,15 @@ export function DatePicker({
 					}}
 				>
 					<DayPicker
-						fromYear={2023}
-						toYear={2054}
-						initialFocus={isShow}
+						startMonth={new Date(2023, 0)}
+						endMonth={new Date(2054, 11)}
+						// initialFocus={isShow}
 						mode='single'
 						defaultMonth={selected}
 						selected={selected}
 						onSelect={handleDaySelect}
 						weekStartsOn={1}
-						formatters={{ formatCaption }}
+						// formatters={{ formatCaption }}
 					/>
 				</div>
 			)}
