@@ -5,15 +5,11 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
-
 import { IAuthForm } from '@/types/auth.types'
-
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
-
 import { authService } from '@/services/auth.service'
 
 export function Auth() {

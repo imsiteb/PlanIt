@@ -21,7 +21,7 @@ export function useTaskDebounce({ watch, itemId }: IUseTaskDebounce) {
 		[]
 	)
 
-	// Теперь debouncedUpdateTask будет сохраняться между рендерами, и debounce будет работать как ожидается.
+	// Теперь debouncedUpdateTask будет сохраняться между рендерами, и debounce будет работать как ожидается
 	const debouncedUpdateTask = useCallback(
 		debounce((formData: TypeTaskFormState) => {
 			updateTask({ id: itemId, data: formData })
