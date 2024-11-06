@@ -7,7 +7,7 @@ interface IListAddRowInput {
   setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 }
 
-export function LIastAddRowInput({ setItems, filterDate }: IListAddRowInput) {
+export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
   const addRow = () => {
     setItems(prev => {
       if (!prev) return

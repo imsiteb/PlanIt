@@ -7,7 +7,7 @@ class DASHBOARD {
   TIMER = `${this.root}/timer`
   TIME_BLOCKING = `${this.root}/time-blocking`
   SETTINGS = `${this.root}/settings`
-  NOTE_LISTS = `${this.root}/note-lists`
+  NOTE_LISTS = `${this.root}/note-list`
   NOTES = `${this.root}/notes`
 }
 

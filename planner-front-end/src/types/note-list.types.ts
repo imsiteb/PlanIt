@@ -10,5 +10,5 @@ export interface INoteListResponse extends IBase{
   notes?: INoteListResponse[]
 }
 
-export type TypeNoteListFormState = Partial<Omit<INoteListResponse, 'id' | 'updatedAt' | 'createdAt'>> // Omit вырезает поля id, updatedAt и возвращает все остальное
+export type TypeNoteListFormState = Partial<Omit<INoteListResponse, 'updatedAt' | 'createdAt'>> // Omit вырезает поля id, updatedAt и возвращает все остальное
 export type TypeNoteFormState = Partial<Omit<INoteResponse, 'id' | 'updatedAt' | 'createdAt'>>

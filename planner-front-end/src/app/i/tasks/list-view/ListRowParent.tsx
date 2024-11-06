@@ -5,7 +5,7 @@ import { ListRow } from "./ListRow"
 import { FILTERS } from "../columns.data"
 import { filterTasks } from "../filter-tasks"
 import styles from './ListView.module.scss'
-import { LIastAddRowInput } from "./ListAddRowInput"
+import { ListAddRowInput } from "./ListAddRowInput"
 
 interface IListRowParent {
   value: string
@@ -20,7 +20,6 @@ export function ListRowParent({
   items,
   setItems
 }: IListRowParent) {
-
 
   return (
     <Droppable droppableId={value}>
@@ -57,7 +56,7 @@ export function ListRowParent({
           {provided.placeholder}
 
           {value !== 'completed' && !items?.some(item => !item.id) && (
-            <LIastAddRowInput
+            <ListAddRowInput
               setItems={setItems}
               filterDate={FILTERS[value] ? FILTERS[value].format() : undefined}
             />
