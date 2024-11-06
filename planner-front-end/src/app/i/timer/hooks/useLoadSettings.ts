@@ -4,7 +4,7 @@ export function useLoadSettings() {
 	const { pomodoroData } = usePomodoroSettings()
 
 	const workInterval = pomodoroData?.workInterval ?? 50 // ?? отдаст 50 ТОЛЬКО если null || undefined
-	const breakInterval = pomodoroData?.workInterval ?? 10 // break?
+	const breakInterval = pomodoroData?.breakInterval ?? 10 // break?
 
 	return { workInterval, breakInterval }
 }

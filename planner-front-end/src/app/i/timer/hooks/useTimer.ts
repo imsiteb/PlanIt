@@ -13,7 +13,7 @@ export function useTimer(): ITimerState {
 	const [activeRound, setActiveRound] = useState<IPomodoroRoundResponse>()
 
 	useEffect(() => {
-		let interval: NodeJS.Timeout | null = null
+		let interval: NodeJS.Timeout | null = null // NodeJS.Timeout — это тип, который возвращает функция setTimeout или setInterval
 
 		if (isRunning) {
 			interval = setInterval(() => {
