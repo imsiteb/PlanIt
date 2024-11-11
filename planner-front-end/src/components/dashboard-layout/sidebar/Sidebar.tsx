@@ -21,7 +21,6 @@ export function Sidebar() {
         </span>
       </Link>
       <div className="p-3 relative">
-        <LogoutButton />
         {MENU.map(item => (
           <MenuItem
             item={item}

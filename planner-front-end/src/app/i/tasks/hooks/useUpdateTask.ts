@@ -1,7 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-
 import { TypeTaskFormState } from '@/types/task.types'
-
 import { taskService } from '@/services/task.service'
 
 export function useUpdateTask(key?: string) {

@@ -11,6 +11,7 @@ export async function middleware(
   const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value
 
   const isAuthPage = url.includes('/auth')
+  
 
   if (isAuthPage && refreshToken) {
     return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, url))

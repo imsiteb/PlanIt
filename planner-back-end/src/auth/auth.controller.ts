@@ -17,8 +17,6 @@ export class AuthController {
     return response
   }
 
-  // @Body извлекает данные из запроса на сервер 
-
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('register') 

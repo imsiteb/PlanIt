@@ -6,6 +6,8 @@ import {
   TypeNoteListFormState
 } from '@/types/note-list.types'
 import { useDeleteNoteList } from './hooks/useDeleteNoteList'
+import Link from 'next/link'
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 export function NoteList({ item }: { item: INoteListResponse }) {
   const { reset } = useFormContext<TypeNoteListFormState>()
@@ -22,7 +24,9 @@ export function NoteList({ item }: { item: INoteListResponse }) {
       >
         <div className='flex items-center'>
           <div>
-            {item.name}{' '}
+            <Link href={`${DASHBOARD_PAGES.NOTE_LISTS}/${item.id}`}>
+              {item.name}{' '}
+            </Link>
           </div>
         </div>
         <div className={styles.actions}>

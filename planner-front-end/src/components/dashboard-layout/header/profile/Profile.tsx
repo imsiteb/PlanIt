@@ -2,6 +2,7 @@
 
 import Loader from "@/components/ui/Loader"
 import { useProfile } from "@/hooks/useProfile"
+import { LogoutButton } from "../../sidebar/LogoutButton"
 
 export function Profile() {
   const { data, isLoading } = useProfile()
@@ -15,9 +16,10 @@ export function Profile() {
           <p className="font-bold -mb-1">{data?.user.name}</p>
         </div>
 
-        <div className="w-10 h-10 flex justify-center items-center text-2xl text-white bg-white/20 rounded uppercase">
+        <div className="w-10 h-10 mr-3 flex justify-center items-center text-2xl text-white bg-white/20 rounded uppercase">
           {data?.user.name?.charAt(0) || 'A'}
         </div>
+        <LogoutButton />
       </div>
     )}
   </div>

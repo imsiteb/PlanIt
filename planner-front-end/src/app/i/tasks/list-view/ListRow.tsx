@@ -84,11 +84,12 @@ export function ListRow({ item, setItems }: IListRow) {
         )}
       />
     </div>
-    <div>
+    <div
+      onClick={() =>
+        item.id ? deleteTask(item.id) : setItems(prev => prev?.slice(0, -1))
+      }
+    >
       <button
-        onClick={() =>
-          item.id ? deleteTask(item.id) : setItems(prev => prev?.slice(0, -1))
-        }
         className='opacity-50 transition-opacity hover:opacity-100'
       >
         {isDeletePending ? <Loader size={15} /> : <Trash size={15} />}

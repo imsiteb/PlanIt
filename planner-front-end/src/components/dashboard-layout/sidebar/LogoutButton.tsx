@@ -14,12 +14,12 @@ export function LogoutButton() {
     onSuccess: () => router.push('/auth')
   })
 
-  return <div className="absolute top-1 right-1">
+  return <div className="flex items-center">
     <button
-      className="opacity-20 hover:opacity-100 transition-opacity duration-300"
+      className="opacity-20 hover:opacity-100 transition-opacity duration-300 "
       onClick={() => mutate()}
     >
-      <LogOut size={20} />
+      <LogOut size={35} />
     </button>
   </div>
 }

@@ -19,7 +19,7 @@ class NoteService {
     return response
   }
 
-  async deleteNoteList(id: string, noteListId: string) {
+  async deleteNote(id: string, noteListId: string) {
     const response = await axiosWithAuth.delete(`${this.BASE_URL}/${noteListId}/${id}`)
     return response
   }

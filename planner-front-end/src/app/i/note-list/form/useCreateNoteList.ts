@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { timeBlockService } from '@/services/time-block.service'
-import { TypeNoteFormState } from '@/types/note-list.types'
+import { TypeNoteListFormState } from '@/types/note-list.types'
 import { noteListService } from '@/services/note-list.service'
 
 export function useCreateNoteList() {
@@ -8,7 +7,7 @@ export function useCreateNoteList() {
 
 	const { mutate: createNoteList, isPending } = useMutation({
 		mutationKey: ['create note-list'],
-		mutationFn: (data: TypeNoteFormState) =>
+		mutationFn: (data: TypeNoteListFormState) =>
 			noteListService.createNoteList(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
