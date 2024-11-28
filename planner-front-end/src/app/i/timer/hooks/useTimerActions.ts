@@ -25,7 +25,7 @@ export function useTimerActions({
 			id: activeRound?.id,
 			data: {
 				totalSeconds: secondsLeft,
-				isCompleted: Math.floor(secondsLeft / 60) <= workInterval
+				isCompleted: false
 			}
 		})
 	}

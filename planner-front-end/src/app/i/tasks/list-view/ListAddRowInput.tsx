@@ -1,5 +1,6 @@
 import type { ITaskResponse } from "@/types/task.types"
 import { Dispatch, SetStateAction } from "react"
+import { useEffect, useRef } from "react";
 import styles from './ListView.module.scss'
 
 interface IListAddRowInput {
@@ -7,10 +8,12 @@ interface IListAddRowInput {
   setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 }
 
-export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
+export function ListAddRowInput({ setItems, filterDate}: IListAddRowInput) {
   const addRow = () => {
     setItems(prev => {
       if (!prev) return
+
+      console.log("prev: ", prev)
 
       return [
         ...prev,

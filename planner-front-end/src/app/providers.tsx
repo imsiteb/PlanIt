@@ -18,7 +18,8 @@ export function Providers({ children }: PropsWithChildren) {
 	return (
 		<QueryClientProvider client={client}>
 			{children}
-			<ReactQueryDevtools initialIsOpen={false} />
+			{process.env.NODE_ENV === 'production' && <ReactQueryDevtools />}
+			{/* <ReactQueryDevtools initialIsOpen={true} buttonPosition="top-right" /> */}
 		</QueryClientProvider>
 	)
 }

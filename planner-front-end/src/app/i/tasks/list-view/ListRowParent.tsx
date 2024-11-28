@@ -21,6 +21,8 @@ export function ListRowParent({
   setItems
 }: IListRowParent) {
 
+  {console.log("items", items)}
+
   return (
     <Droppable droppableId={value}>
       {provided => (
@@ -34,7 +36,7 @@ export function ListRowParent({
           {filterTasks(items, value)?.map((item, index) => (
             <Draggable
               key={item.id}
-              draggableId={item.id}
+              draggableId={item.id.toString()}
               index={index}
             >
               {provided => (
